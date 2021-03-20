@@ -1,6 +1,16 @@
-const CustomError = require("../extensions/custom-error");
-
-module.exports = function createDreamTeam(/* members */) {
-  throw new CustomError('Not implemented');
-  // remove line with error and write your code here
+module.exports = function createDreamTeam(members) {
+  let dreamTeam = [];
+  let dreamTeamTitle = '';
+  if (!Array.isArray(members)) {
+    return false;
+  }
+  for (let name of members) {
+    if (typeof name == 'string') {
+      dreamTeam.push(name.replace(/\s+/g, '').toUpperCase());
+    }
+  }
+  for (let name of dreamTeam.sort()) {
+    dreamTeamTitle += name[0];
+  }
+  return dreamTeamTitle;
 };
